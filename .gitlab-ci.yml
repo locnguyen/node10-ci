@@ -15,7 +15,7 @@ build_image:
   image: gitlab/dind
   before_script:
     - docker info
-    - apk add make
+    - apt-get install make
   script:
     - make image
 
