@@ -23,7 +23,7 @@ push_image:
     - master
   before_script:
     - apt-get update && apt-get install make
-    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make image
     - make push
