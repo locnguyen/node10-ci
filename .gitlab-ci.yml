@@ -1,0 +1,33 @@
+variables:
+  DOCKER_DRIVE: overlay2
+
+image: docker:latest
+
+stages:
+  - build
+  - push
+
+build_image:
+  stage: build
+  before_script:
+    - docker info
+  script:
+    - make image
+
+push_image:
+  stage: push
+  except:
+    - master
+  script:
+    - make push
+  after_script:
+    - make clean
+
+push_latest_image:
+  stage: push
+  only:
+    - master
+  script:
+    - make push-all
+  after_script:
+    - make clean
