@@ -3,6 +3,9 @@ variables:
 
 image: node:8-alpine
 
+services:
+  - docker:dind
+
 stages:
   - build
   - push
