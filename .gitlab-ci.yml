@@ -18,6 +18,8 @@ push_image:
   stage: push
   except:
     - master
+  before_script:
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make push
   after_script:
@@ -27,6 +29,8 @@ push_latest_image:
   stage: push
   only:
     - master
+  before_script:
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make push-all
   after_script:
