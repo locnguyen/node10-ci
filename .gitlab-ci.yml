@@ -14,6 +14,8 @@ build_image:
     - apt-get update && apt-get install make
   script:
     - make image
+  after_script:
+    - make clean
 
 push_image:
   stage: push
@@ -21,8 +23,9 @@ push_image:
     - master
   before_script:
     - apt-get update && apt-get install make
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
+    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --
   script:
+    - make image
     - make push
   after_script:
     - make clean
@@ -35,6 +38,7 @@ push_latest_image:
     - apt-get update && apt-get install make
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
+    - make image
     - make push-all
   after_script:
     - make clean
