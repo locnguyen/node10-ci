@@ -1,7 +1,7 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: gitlab/dind
+image: node:8-alpine
 
 stages:
   - build
