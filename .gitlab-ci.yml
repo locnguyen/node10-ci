@@ -1,7 +1,7 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: node:8-alpine
+image: lochnguyen/node10-ci:latest
 
 services:
   - docker:dind
@@ -12,10 +12,8 @@ stages:
 
 build_image:
   stage: build
-  image: gitlab/dind
   before_script:
     - docker info
-    - apt-get install make
   script:
     - make image
 
