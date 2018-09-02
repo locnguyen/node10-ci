@@ -12,6 +12,7 @@ stages:
 
 build_image:
   stage: build
+  image: gitlab/dind
   before_script:
     - docker info
     - apk add make
