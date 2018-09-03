@@ -1,7 +1,7 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: gitlab/dind
+image: lochnguyen/node10-ci
 
 stages:
   - build
@@ -11,7 +11,6 @@ build_image:
   stage: build
   before_script:
     - docker info
-    - apt-get update && apt-get install make
   script:
     - make image
   after_script:
@@ -22,7 +21,6 @@ push_image:
   except:
     - master
   before_script:
-    - apt-get update && apt-get install make
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make image
@@ -35,7 +33,6 @@ push_latest_image:
   only:
     - master
   before_script:
-    - apt-get update && apt-get install make
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make image
