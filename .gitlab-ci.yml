@@ -1,7 +1,7 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: lochnguyen/node10-ci
+image: lochnguyen/node10-ci:c463752
 
 stages:
   - build
