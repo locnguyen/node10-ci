@@ -2,8 +2,6 @@ FROM node:10-alpine
 
 LABEL maintainer="lochnguyen@gmail.com"
 
-ADD ./wrapdocker /usr/local/bin/wrapdocker
-
 RUN apk --no-cache add \
   g++ \
   gcc \
@@ -17,10 +15,6 @@ RUN apk --no-cache add \
   bash \
   iptables \
   ca-certificates \
-  e2fsprogs \
-  docker \
-  && chmod +x /usr/local/bin/wrapdocker \
-  && rm -rf /var/cache/apk/*
-
-VOLUME /var/lib/docker
-CMD ["wrapdocker"]
+  vips-dev \
+  fftw-dev --update-cache \
+  --repository https://dl-3.alpinelinux.org/alpine/edge/testing/

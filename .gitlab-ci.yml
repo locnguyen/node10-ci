@@ -1,7 +1,10 @@
 variables:
   DOCKER_DRIVE: overlay2
 
-image: lochnguyen/node10-ci:c463752
+image: docker:dind
+
+services:
+  - docker:dind
 
 stages:
   - build
