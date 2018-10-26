@@ -14,7 +14,7 @@ push_image:
   except:
     - master
   before_script:
-    - apk update && apk add bash make --update --no-caches
+    - apk update && apk add bash make git --update --no-caches
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make image
@@ -27,7 +27,7 @@ push_latest_image:
   only:
     - master
   before_script:
-    - apk update && apk add bash make --update --no-caches
+    - apk update && apk add bash make git --update --no-caches
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
   script:
     - make image
