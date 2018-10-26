@@ -18,6 +18,7 @@ RUN apk --no-cache add \
   vips-dev \
   fftw-dev \
   git --update-cache \
-  --repository https://dl-3.alpinelinux.org/alpine/edge/testing/
+  --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
+  --repository http://nl.alpinelinux.org/alpine/edge/main
 
 RUN npm install -g node-gyp
